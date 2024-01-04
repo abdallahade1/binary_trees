@@ -79,7 +79,7 @@ int is_perfect_recursion(const binary_tree_t *tree, size_t leaf_d, size_t lvl)
  */
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-	if (!tree)
+	if (tree == NULL)
 		return (0);
 
 	return (is_perfect_recursion(tree,
