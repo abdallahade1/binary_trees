@@ -7,14 +7,13 @@
  */
 size_t binary_tree_depth(const binary_tree_t *tree)
 {
-        size_t tree_depth = 0;
+	size_t tree_depth = 0;
 
-        if (tree == NULL)
-                return (0);
-
-        if (tree->parent != NULL)
-                tree_depth = 1 + binary_tree_depth(tree->parent);
-        return (tree_depth);
+	if (tree == NULL)
+		return (0);
+	if (tree->parent != NULL)
+		tree_depth = 1 + binary_tree_depth(tree->parent);
+	return (tree_depth);
 }
 
 /**
@@ -45,13 +44,13 @@ const binary_tree_t *binary_tree_get_leaf(const binary_tree_t *tree)
 		return (tree);
 
 	if (tree->left)
-		return(binary_tree_get_leaf(tree->left));
+		return (binary_tree_get_leaf(tree->left));
 	else
-		return(binary_tree_get_leaf(tree->right));
+		return (binary_tree_get_leaf(tree->right));
 }
 
 /**
- * is_perfect_recursion - checks if if a binary tree is perufect using recursion
+ * is_perfect_recursion - checks a binary tree using recursion
  * @tree: ptr to root of a tree
  * @lvl: level of ongoing node
  * Return: 1 or 0
@@ -69,7 +68,7 @@ int is_perfect_recursion(const binary_tree_t *tree, size_t leaf_d, size_t lvl)
 	if (tree->left == NULL || tree->right == NULL)
 		return (0);
 
-	return(is_perfect_recursion(tree->left, leaf_d, lvl + 1) &&
+	return (is_perfect_recursion(tree->left, leaf_d, lvl + 1) &&
 			is_perfect_recursion(tree->right, leaf_d, lvl + 1));
 }
 
@@ -83,5 +82,6 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 	if (!tree)
 		return (0);
 
-	return(is_perfect_recursion(tree, binary_tree_depth(binary_tree_get_leaf(tree)), 0));
+	return (is_perfect_recursion(tree,
+				binary_tree_depth(binary_tree_get_leaf(tree)), 0));
 }
